@@ -36,10 +36,10 @@ st.markdown("""
 
 
 # Define the connection parameters
-server = 'CALVIN_PC\CALVINDATA'       # e.g., 'localhost' or 'server_name'
+server = 'CALVIN-PC\\CALVINDATA'       # e.g., 'localhost' or 'server_name'
 database = 'FinancialSpend'   # e.g., 'my_database'
 username = 'CalvinHP'   # e.g., 'my_username'
-password = 'HPlaptop2024!'   # e.g., 'my_password'
+password = 'PAVlaptop2024!'   # e.g., 'my_password'
 driver = 'ODBC Driver 17 for SQL Server'  # Make sure this matches the installed ODBC driver
 
 # Create the connection string
@@ -49,9 +49,14 @@ connection_string = f"mssql+pyodbc://{username}:{password}@{server}/{database}?d
 engine = create_engine(connection_string)
 
 
+# Define your SQL query
+query = 'SELECT * FROM dbo.BTCHistory'  # Replace 'your_table' with your actual table name
+
+# Execute the query and fetch the data into a DataFrame
+df = pd.read_sql_query(query, engine)
 
 
-
+st.table(df)
 
 
 
