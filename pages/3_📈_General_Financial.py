@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-from sqlalchemy import create_engine
 
 st.markdown(
         """
@@ -32,35 +31,10 @@ st.markdown("""
             unsafe_allow_html=True
         )
 
-
-
-
-# Define the connection parameters
-server = 'CALVIN-PC\\CALVINDATA'       # e.g., 'localhost' or 'server_name'
-database = 'FinancialSpend'   # e.g., 'my_database'
-username = 'CalvinHP'   # e.g., 'my_username'
-password = 'PAVlaptop2024!'   # e.g., 'my_password'
-driver = 'ODBC Driver 17 for SQL Server'  # Make sure this matches the installed ODBC driver
-
-# Create the connection string
-connection_string = f"mssql+pyodbc://{username}:{password}@{server}/{database}?driver={driver}"
-
-# Create the SQLAlchemy engine
-engine = create_engine(connection_string)
-
-
-# Define your SQL query
-query = 'SELECT * FROM dbo.BTCHistory'  # Replace 'your_table' with your actual table name
-
-# Execute the query and fetch the data into a DataFrame
-df = pd.read_sql_query(query, engine)
+df = pd.read_csv("data\\BTCHistory.csv")
 
 
 st.table(df)
-
-
-
-
 
 #C 2024
 st.markdown("""
