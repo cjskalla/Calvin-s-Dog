@@ -67,7 +67,7 @@ with tab[0]:
             )
 
         #Bring in the BTC Data
-        df = pd.read_csv("data\\BTCHistory.csv")
+        df = pd.read_csv("Calvin-s-dog\\data\\BTCHistory.csv")
 
 
         # Plotting
