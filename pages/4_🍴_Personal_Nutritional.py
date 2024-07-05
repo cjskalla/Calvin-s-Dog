@@ -1,6 +1,12 @@
 import streamlit as st
 import pandas as pd
 
+#Page Configuration
+page = st.set_page_config(page_icon=":fork_and_knife:", 
+                layout="wide"
+                )
+
+#Title
 st.markdown(
         """
         <h3 style="

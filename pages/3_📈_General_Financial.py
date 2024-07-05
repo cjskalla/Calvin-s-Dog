@@ -1,6 +1,16 @@
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.stats import zscore
 
+
+#Page Configuration
+page = st.set_page_config(page_icon=":chart_with_upwards_trend:", 
+                layout="wide"
+                )
+
+#Title
 st.markdown(
         """
         <h3 style="
@@ -14,7 +24,6 @@ st.markdown(
         """,
         unsafe_allow_html=True
     )
-
 
 #About
 st.markdown("""
@@ -31,10 +40,55 @@ st.markdown("""
             unsafe_allow_html=True
         )
 
-df = pd.read_csv("data\\BTCHistory.csv")
+
+tab = st.tabs(["💲 Crypto", "📈 Stocks", "💰 Private Investments"])
+
+#Breakout Financial
+with tab[0]:
+
+    crypto_tab = st.tabs(["💲 Bitcoin", "💲 Etherum"])
+
+    #Breakout Crypto
+    with crypto_tab[0]:
+
+        #Bitcoin Title
+        st.markdown(
+                """
+                <h3 style="
+                    text-align: center;
+                    font-family: Forum;
+                    font-weight: 400;
+                    font-size: 200%;
+                    ">
+                    Bitcoin
+                </h1>
+                """,
+                unsafe_allow_html=True
+            )
+
+        #Bring in the BTC Data
+        df = pd.read_csv("data\\BTCHistory.csv")
 
 
-st.table(df)
+        # Plotting
+        figure, ax = plt.subplots()
+        figure.patch.set_facecolor('white')  # Set the figure background color to white
+
+        figure = ax.plot(df['Date'], df['Volume(M)'], label = 'Volume(M)')
+        figure = ax.plot(df['Date'], df['Close'], label = 'Close')
+
+        # Adding labels and title
+        figure = ax.set_xlabel('Date')
+        figure = ax.set_ylabel('Amount')
+        figure = ax.set_title('Line Chart of Metrics Over Time')
+        figure = ax.legend(title='Metric')
+        figure = ax.grid(True)
+
+
+        st.pyplot(fig=figure,
+                  use_container_width=False)
+
+        st.table(df)
 
 #C 2024
 st.markdown("""
