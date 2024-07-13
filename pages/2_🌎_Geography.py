@@ -15,7 +15,7 @@ st.markdown(
             font-weight: 400;
             font-size: 300%;
             ">
-            Personal Physiological Data
+            Geographical Data
         </h1>
         """,
         unsafe_allow_html=True
@@ -31,7 +31,7 @@ st.markdown("""
                 padding-bottom: -100px
                 color: rgb(102, 67, 70);
             ">
-                Learn about my body through Data !!
+                Learn about the world through data !!
             </p>
             """,
             unsafe_allow_html=True

@@ -67,28 +67,9 @@ with tab[0]:
             )
 
         #Bring in the BTC Data
-        df = pd.read_csv("BTCHistory.csv")
+        df = pd.read_csv("data/BTCHistory.csv")
 
-
-        # Plotting
-        figure, ax = plt.subplots()
-        figure.patch.set_facecolor('white')  # Set the figure background color to white
-
-        figure = ax.plot(df['Date'], df['Volume(M)'], label = 'Volume(M)')
-        figure = ax.plot(df['Date'], df['Close'], label = 'Close')
-
-        # Adding labels and title
-        figure = ax.set_xlabel('Date')
-        figure = ax.set_ylabel('Amount')
-        figure = ax.set_title('Line Chart of Metrics Over Time')
-        figure = ax.legend(title='Metric')
-        figure = ax.grid(True)
-
-
-        st.pyplot(fig=figure,
-                  use_container_width=False)
-
-        st.table(df)
+        st.line_chart(df)
 
 #C 2024
 st.markdown("""
